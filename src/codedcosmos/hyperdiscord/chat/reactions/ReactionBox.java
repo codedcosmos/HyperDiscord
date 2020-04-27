@@ -15,6 +15,7 @@
 package codedcosmos.hyperdiscord.chat.reactions;
 
 import codedcosmos.hyperdiscord.utils.debug.Log;
+import net.dv8tion.jda.api.entities.Emote;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.guild.react.GuildMessageReactionAddEvent;
 import net.dv8tion.jda.api.events.message.guild.react.GuildMessageReactionRemoveEvent;
@@ -39,7 +40,7 @@ public class ReactionBox implements ReactionReactor {
 		
 		count = 0;
 		
-		addToMessageQueue();
+		addToMessageComplete();
 	}
 	
 	@Override
