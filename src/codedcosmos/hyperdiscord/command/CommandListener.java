@@ -46,11 +46,11 @@ public abstract class CommandListener<C extends GuildContext> extends ListenerAd
 		try {
 			processMessageRecievedEvent(event);
 		} catch (Exception e) {
-			onCommandExecutionException(e);
+			onCommandExecutionException(e, event);
 		}
 	}
 
-	public abstract void onCommandExecutionException(Exception e);
+	public abstract void onCommandExecutionException(Exception e, MessageReceivedEvent event);
 	
 	public void processMessageRecievedEvent(MessageReceivedEvent event) throws Exception {
 		// Just make sure guild is cached
