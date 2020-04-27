@@ -46,12 +46,11 @@ public abstract class CommandListener<C extends GuildContext> extends ListenerAd
 		try {
 			processMessageRecievedEvent(event);
 		} catch (Exception e) {
-			Log.printErr("Caught Exception when trying to execute command!");
-			Log.printErr("Command Message: '" + event.getMessage().getContentRaw() + "'");
-			Log.printErr("");
-			Log.printErr(e);
+			onCommandExecutionException(e);
 		}
 	}
+
+	public abstract void onCommandExecutionException(Exception e);
 	
 	public void processMessageRecievedEvent(MessageReceivedEvent event) throws Exception {
 		// Just make sure guild is cached
