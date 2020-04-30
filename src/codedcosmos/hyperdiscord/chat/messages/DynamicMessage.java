@@ -16,7 +16,9 @@ package codedcosmos.hyperdiscord.chat.messages;
 
 import codedcosmos.hyperdiscord.chat.reactions.ReactionReactor;
 import codedcosmos.hyperdiscord.guild.GuildContext;
+import codedcosmos.hyperdiscord.utils.debug.Log;
 import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.events.message.MessageDeleteEvent;
 import net.dv8tion.jda.api.events.message.guild.react.GuildMessageReactionAddEvent;
 import net.dv8tion.jda.api.events.message.guild.react.GuildMessageReactionRemoveEvent;
 
@@ -24,6 +26,7 @@ public abstract class DynamicMessage implements ReactionReactor {
 
 	private boolean exists = false;
 	protected Message message;
+	private long messageIdLong;
 
 	private GuildContext context;
 
@@ -36,14 +39,15 @@ public abstract class DynamicMessage implements ReactionReactor {
 	public abstract void postUpdate(Message message);
 
 	public void send() {
-		if (exists) delete();
+		if (exists()) delete();
 		message = context.getBotTextChannel().sendMessage(getNew()).complete();
+		messageIdLong = this.message.getIdLong();
 		exists = true;
 		postSend(message);
 	}
 
 	public void updateState() {
-		if (!exists) return;
+		if (!exists()) return;
 		Message message = getNew();
 		this.message.editMessage(message).queue();
 		postUpdate(this.message);
@@ -62,6 +66,12 @@ public abstract class DynamicMessage implements ReactionReactor {
 
 	public boolean exists() {
 		return exists;
+	}
+	
+	public void checkForDeletion(MessageDeleteEvent event) {
+		if (event.getMessageIdLong() == messageIdLong) {
+			exists = false;
+		}
 	}
 	
 	@Override
