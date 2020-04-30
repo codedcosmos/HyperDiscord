@@ -25,7 +25,7 @@ public class Log {
 	private static SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
 	private static Date date = new Date();
 	
-	private static LogCache cache = new LogCache(5);
+	private static LogCache cache = new LogCache(25);
 	
 	// Print
 	public static void print(Object... line) {
