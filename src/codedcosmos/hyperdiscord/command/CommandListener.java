@@ -147,4 +147,9 @@ public abstract class CommandListener<C extends GuildContext> extends ListenerAd
 	public Command get(int i) {
 		return commands.get(i);
 	}
+	
+	public void appendCommands(CommandListener commandListener) {
+		commands.addAll(commandListener.getCommands());
+		Log.print("Appended " + commandListener.size() + " commands!");
+	}
 }
