@@ -55,13 +55,15 @@ public abstract class CommandListener<C extends GuildContext> extends ListenerAd
 	public void processMessageRecievedEvent(MessageReceivedEvent event) throws Exception {
 		// Just make sure guild is cached
 		C context = addGuild(event.getGuild());
-		context.updateBotTextChannel(event.getTextChannel());
 		
 		// Make sure it's a command
 		if (!isCommand(event.getMessage())) return;
 		
 		// Make sure it's not a bot
 		if (event.getAuthor().isBot()) return;
+		
+		// Update bot channel
+		context.updateBotTextChannel(event.getTextChannel());
 		
 		String[] raw_message = event.getMessage().getContentDisplay().substring(1).split(" ");
 		String commandID = raw_message[0];
@@ -128,6 +130,7 @@ public abstract class CommandListener<C extends GuildContext> extends ListenerAd
 				continue;
 			}
 		}
+		Log.print("Loaded " + commands.size());
 		Log.insertLine();
 		
 		return commands;
