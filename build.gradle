@@ -9,8 +9,8 @@ group 'codedcosmos'
 version '0.1'
 mainClassName = 'codedcosmos.cometbot.core.CometBot'
 
-sourceCompatibility = 11
-targetCompatibility = 11
+sourceCompatibility = 8
+targetCompatibility = 8
 
 repositories {
     mavenLocal()
