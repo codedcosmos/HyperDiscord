@@ -17,15 +17,18 @@ package codedcosmos.hyperdiscord.utils.text;
 public class OrderedString {
 	private int distance;
 	private String text;
+	private String compareText;
 	
 	public OrderedString(String text, String compare) {
 		distance = TextUtils.distance(text, compare);
 		this.text = text;
+		this.compareText = text;
 	}
 	
 	public OrderedString(String text, String comparel, String comparer) {
 		distance = TextUtils.distance(comparel, comparer);
 		this.text = text;
+		this.compareText = comparel;
 	}
 	
 	public int getDistance() {
@@ -34,5 +37,9 @@ public class OrderedString {
 	
 	public String getText() {
 		return text;
+	}
+	
+	public String getCompareText() {
+		return compareText;
 	}
 }
