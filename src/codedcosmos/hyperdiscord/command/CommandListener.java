@@ -76,19 +76,9 @@ public abstract class CommandListener<C extends GuildContext> extends ListenerAd
 			}
 		}
 		
-		// No Command Found
-		ArrayList<OrderedString> suggestions = new ArrayList<OrderedString>();
+		// No Command Found get suggestions
+		ArrayList<OrderedString> suggestions = getSuggestions(commandID);
 		
-		for (Command command : commands) {
-			// Add command
-			String commandName = command.getClass().getSimpleName().toLowerCase();
-			suggestions.add(new OrderedString(commandName, commandID));
-			
-			// Add Aliases
-			for (String alias : command.getAliases()) {
-				suggestions.add(new OrderedString(commandName, alias, commandID));
-			}
-		}
 		
 		// Sort
 		Collections.sort(suggestions, new Comparator<OrderedString>() {
@@ -134,6 +124,23 @@ public abstract class CommandListener<C extends GuildContext> extends ListenerAd
 		Log.insertLine();
 		
 		return commands;
+	}
+	
+	public ArrayList<OrderedString> getSuggestions(String commandID) {
+		ArrayList<OrderedString> suggestions = new ArrayList<OrderedString>();
+		
+		for (Command command : commands) {
+			// Add command
+			String commandName = command.getClass().getSimpleName().toLowerCase();
+			suggestions.add(new OrderedString(commandName, commandID));
+			
+			// Add Aliases
+			for (String alias : command.getAliases()) {
+				suggestions.add(new OrderedString(commandName, alias, commandID));
+			}
+		}
+		
+		return suggestions;
 	}
 	
 	public ArrayList<Command> getCommands() {
