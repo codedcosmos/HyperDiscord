@@ -26,18 +26,18 @@ import java.util.ArrayList;
 
 public abstract class HelpMessageGenerator {
 	
-	public Message buildMessage(MessageReceivedEvent event, int maxPerPage) {
-		return buildMessage(event.getMessage().getContentDisplay(), maxPerPage);
+	public Message buildMessage(MessageReceivedEvent event, int maxPerPage, char commandStart) {
+		return buildMessage(event.getMessage().getContentDisplay(), maxPerPage, commandStart);
 	}
 	
-	public Message buildMessage(String message, int maxPerPage) {
+	public Message buildMessage(String message, int maxPerPage, char commandStart) {
 		int maxPages = getMaxPages(maxPerPage);
 		int page = extractPage(message, maxPages);
 		
-		return buildMessage(page, maxPerPage);
+		return buildMessage(page, maxPerPage, commandStart);
 	}
 	
-	public Message buildMessage(int page, int maxPerPage) {
+	public Message buildMessage(int page, int maxPerPage, char commandStart) {
 		int maxPages = getMaxPages(maxPerPage);
 		
 		// Create message builder and embed builder
