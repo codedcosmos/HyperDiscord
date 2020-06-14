@@ -58,4 +58,7 @@ public abstract class GuildContext implements ReactionReactor {
 		return guild.getIdLong();
 	}
 	
+	public Guild getGuild() {
+		return guild;
+	}
 }
