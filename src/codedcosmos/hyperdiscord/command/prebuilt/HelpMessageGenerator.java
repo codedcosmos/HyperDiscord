@@ -72,7 +72,7 @@ public abstract class HelpMessageGenerator {
 			commandContent += command.getHelp() + "\n\n";
 			commandContent += "Usage:" + "\n";
 			for (String usage : command.getStynax()) {
-				commandContent += "-" + command.getName() + " " + usage + "\n";
+				commandContent += commandStart + command.getName() + " " + usage + "\n";
 			}
 			commandContent += "\n";
 			
