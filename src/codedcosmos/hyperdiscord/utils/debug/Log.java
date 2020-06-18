@@ -93,7 +93,7 @@ public class Log {
 		return object.toString();
 	}
 	
-	public static String[] getCache() {
-		return cache.getCache();
+	public static LogCache getCache() {
+		return cache;
 	}
 }
