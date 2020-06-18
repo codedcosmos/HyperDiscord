@@ -71,7 +71,7 @@ public abstract class CommandListener<C extends GuildContext> extends ListenerAd
 		// Find and run command
 		for (Command command : commands) {
 			if (command.getClass().getSimpleName().toLowerCase().equals(commandID)) {
-				onCommandRun(command);
+				onCommandRun(event, command);
 				command.run(event);
 				return;
 			}
@@ -93,7 +93,7 @@ public abstract class CommandListener<C extends GuildContext> extends ListenerAd
 		TextSender.send(event.getTextChannel(), "Command '" + commandID + " does not exist, did you mean " + suggestions.get(0).getText() + "?");
 	}
 	
-	protected abstract void onCommandRun(Command command);
+	protected abstract void onCommandRun(MessageReceivedEvent event, Command command);
 	
 	public boolean isCommand(Message message) {
 		// Ignore messages that don't start with .
