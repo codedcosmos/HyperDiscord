@@ -146,6 +146,16 @@ public abstract class CommandListener<C extends GuildContext> extends ListenerAd
 		return suggestions;
 	}
 	
+	public ArrayList<String> getAliases() {
+		ArrayList<String> aliases = new ArrayList<String>();
+		for (Command command : commands) {
+			for (String alias : command.getAliases()) {
+				aliases.add(alias);
+			}
+		}
+		return aliases;
+	}
+	
 	public ArrayList<Command> getCommands() {
 		return commands;
 	}
