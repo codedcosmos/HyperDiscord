@@ -16,7 +16,6 @@ package codedcosmos.hyperdiscord.chat.messages;
 
 import codedcosmos.hyperdiscord.chat.reactions.ReactionReactor;
 import codedcosmos.hyperdiscord.guild.GuildContext;
-import codedcosmos.hyperdiscord.utils.debug.Log;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.MessageDeleteEvent;
 import net.dv8tion.jda.api.events.message.guild.react.GuildMessageReactionAddEvent;
