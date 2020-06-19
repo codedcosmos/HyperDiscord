@@ -90,7 +90,7 @@ public abstract class CommandListener<C extends GuildContext> extends ListenerAd
 			}
 		});
 		
-		TextSender.send(event.getTextChannel(), "Command '" + commandID + " does not exist, did you mean " + suggestions.get(0).getText() + "?");
+		TextSender.send(event.getTextChannel(), "Command '" + commandID + "' does not exist, did you mean " + suggestions.get(0).getText() + "?");
 	}
 	
 	protected abstract void onCommandRun(MessageReceivedEvent event, Command command);
